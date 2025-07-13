@@ -33,9 +33,7 @@ const TodoSlice = createSlice({
       });
     },
     deleteTodo: (state, action) => {
-      return state.filter((todo) => {
-        todo.todoId != action.payload;
-      });
+      return state.filter((todo) => todo.todoId !== action.payload);
     },
   },
 });
