@@ -1,18 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import TodoContainer from "./TodoContainer";
+import { useDispatch } from "react-redux";
+import { addTodo } from "../feature/TodoSlice";
 
 const TodoForm = () => {
+  const [text, setText] = useState("");
+  const dispatch = useDispatch();
+
+  const handleSubmitTodo = (e) => {
+    e.preventDefault();
+    dispatch(addTodo(text));
+    setText("");
+  };
+
   return (
-    <div className="flex  items-center flex-col h-[500px] w-[800px] bg-red-300 rounded-2xl gap-5 ">
-      <h1 className="text-3xl font-bold">TODO APPLICATION</h1>
-      <form className="flex">
-        <input type="text" className="bg-green-100 rounded-l-[5px] h-[40px] w-[500px] px-4 py-3" placeholder="enter your task"/>
-        <button className="bg-amber-200 h-[40px] rounded-r-[5px] px-4">
+    <div className="flex items-center flex-col min-h-[600px] w-full max-w-[850px] bg-red-200 rounded-2xl gap-6 p-6 shadow-lg mx-auto">
+      <h1 className="text-4xl font-extrabold text-white drop-shadow-md">TODO APPLICATION</h1>
+
+      <form className="flex w-full max-w-[650px]" onSubmit={handleSubmitTodo}>
+        <input
+          type="text"
+          className="bg-green-100 rounded-l-md h-[45px] w-full px-4 py-2 text-lg border border-green-300 focus:outline-none focus:ring-2 focus:ring-green-400"
+          placeholder="Enter your task"
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+        />
+        <button
+          type="submit"
+          className="bg-amber-400 h-[45px] px-6 text-white font-semibold text-lg rounded-r-md hover:bg-amber-500 transition-all"
+        >
           Submit
         </button>
       </form>
-      <div>
-        <TodoContainer/>
+
+      <div className="w-full max-w-[700px]">
+        <TodoContainer />
       </div>
     </div>
   );

@@ -33,12 +33,12 @@ const TodoSlice = createSlice({
       });
     },
     deleteTodo: (state, action) => {
-      state.map((todo) => {
-        return todo.todoId != action.payload;
+      return state.filter((todo) => {
+        todo.todoId != action.payload;
       });
     },
   },
 });
 
-export const { editTodo, deleteTodo, addTodo,toggleTodo } = TodoSlice.actions;
+export const { editTodo, deleteTodo, addTodo, toggleTodo } = TodoSlice.actions;
 export default TodoSlice.reducer;
