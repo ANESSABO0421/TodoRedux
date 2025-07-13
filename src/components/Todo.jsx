@@ -70,7 +70,12 @@ const Todo = ({ todo }) => {
           <>
             <button
               onClick={() => handleEdit(todo.todoText, todo.todoId)}
-              className="px-4 py-1 bg-yellow-400 text-white rounded-md hover:bg-yellow-500 transition"
+              disabled={todo.complete}
+              className={`px-4 py-1 text-white rounded-md transition ${
+                todo.complete
+                  ? "bg-gray-400 opacity-70 cursor-not-allowed"
+                  : "bg-yellow-400 hover:bg-yellow-500"
+              }`}
             >
               Edit
             </button>
@@ -83,7 +88,9 @@ const Todo = ({ todo }) => {
             <button
               onClick={() => handleComplete(todo.todoId)}
               className={`px-4 py-1 text-white rounded-md transition ${
-                todo.complete ? "bg-blue-500 hover:bg-blue-600" : "bg-green-500 hover:bg-green-600"
+                todo.complete
+                  ? "bg-blue-500 hover:bg-blue-600"
+                  : "bg-green-500 hover:bg-green-600"
               }`}
             >
               {todo.complete ? "Undo" : "Complete"}

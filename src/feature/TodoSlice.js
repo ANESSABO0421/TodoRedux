@@ -19,7 +19,7 @@ const TodoSlice = createSlice({
 
       state.map((todo) => {
         if (todo.todoId === todoId) {
-          todo.todoText === todoText;
+          todo.todoText = todoText;
         }
         return todo;
       });

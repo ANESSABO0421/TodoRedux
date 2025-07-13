@@ -17,7 +17,7 @@ const TodoForm = () => {
     <div className="w-full min-h-screen bg-gradient-to-br from-green-100 to-lime-200 px-4 py-10">
       <div className="flex items-center flex-col w-full max-w-[850px] bg-white rounded-2xl gap-6 p-8 shadow-xl mx-auto">
         <h1 className="text-4xl font-extrabold text-green-700 drop-shadow-sm text-center">
-          📝 TODO APPLICATION
+          TODO APPLICATION
         </h1>
 
         <form className="flex flex-col sm:flex-row w-full max-w-[650px] gap-4" onSubmit={handleSubmitTodo}>
